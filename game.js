@@ -6,22 +6,29 @@ let gameBoard = [
   [null, null, null] 
 ]
 
-gameBoard[0][1] = 'X'
-
-console.log(gameBoard)
-
 document.querySelectorAll('.game-button').forEach((button) => {
   button.addEventListener('click', () => {
+    const row = button.dataset.row;
+    const column = button.dataset.column;
+    const rowIndex = parseInt(row)
+    const columnIndex = parseInt(column)
+
     if(moveIndicator === false){
       button.innerHTML = 'O'
-      //changes button but also changes array
+      gameBoard[rowIndex][columnIndex] = 'O'
+      console.log(gameBoard)
+      
     } else if (moveIndicator === true){
       button.innerHTML= 'X'
-
+      gameBoard[rowIndex][columnIndex] = 'X'
+      console.log(gameBoard)
     }
-   
+
+    setTimeout(checkIfWin, 100);
+    
   });
 });
+
 
 const oButton = document.querySelector('.side-button-O');
 function toggledOButton(){
@@ -61,7 +68,45 @@ function toggleOffX (){
   }
 }
 
-function fillGameBoard (){
+function checkIfWin(){
+   if(gameBoard[0][0] === 'X' && gameBoard[0][1] === 'X' && gameBoard[0][2] === 'X'
+    ||
+    gameBoard[1][0] === 'X' && gameBoard[1][1] === 'X' && gameBoard[1][2] === 'X'
+    ||
+    gameBoard[2][0] === 'X' && gameBoard[2][1] === 'X' && gameBoard[2][2] === 'X'
+    ||
+    gameBoard[0][0] === 'X' && gameBoard[1][0] === 'X' && gameBoard[2][0] === 'X'
+    ||
+     gameBoard[0][1] === 'X' && gameBoard[1][1] === 'X' && gameBoard[2][1] === 'X'
+    ||
+     gameBoard[0][2] === 'X' && gameBoard[1][2] === 'X' && gameBoard[2][2] === 'X'
+    ||
+    gameBoard[0][0] === 'X' && gameBoard[1][1] === 'X' && gameBoard[2][2] === 'X'
+    ||
+    gameBoard[0][2] === 'X' && gameBoard[1][1] === 'X' && gameBoard[2][0] === 'X'
+
+   ){
+    alert("Player using X wins!")
+
+   } else if(gameBoard[0][0] === 'O' && gameBoard[0][1] === 'O' && gameBoard[0][2] === 'O'
+    ||
+    gameBoard[1][0] === 'O' && gameBoard[1][1] === 'O' && gameBoard[1][2] === 'O'
+    ||
+    gameBoard[2][0] === 'O' && gameBoard[2][1] === 'O' && gameBoard[2][2] === 'O'
+    ||
+    gameBoard[0][0] === 'O' && gameBoard[1][0] === 'O' && gameBoard[2][0] === 'O'
+    ||
+     gameBoard[0][1] === 'O' && gameBoard[1][1] === 'O' && gameBoard[2][1] === 'O'
+    ||
+     gameBoard[0][2] === 'O' && gameBoard[1][2] === 'O' && gameBoard[2][2] === 'O'
+    ||
+    gameBoard[0][0] === 'O' && gameBoard[1][1] === 'O' && gameBoard[2][2] === 'O'
+    ||
+    gameBoard[0][2] === 'O' && gameBoard[1][1] === 'O' && gameBoard[2][0] === 'O'
+
+    ){
+      alert('Player using O wins!')
+   }
 
 }
 
