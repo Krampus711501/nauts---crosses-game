@@ -54,14 +54,14 @@ function toggledXButton(){
 })
 }
 
-function toggleOffO (){
+function toggleOffO(){
 
   if(oButton.classList.contains('green-highlight')){
     oButton.classList.remove('green-highlight')
   }
 }
 
-function toggleOffX (){
+function toggleOffX(){
 
   if (xButton.classList.contains('red-highlight')){
     xButton.classList.remove('red-highlight')
@@ -110,6 +110,18 @@ function checkIfWin(){
 
 }
 
+function fullReset(){
+  document.querySelector('.reset-button').
+  addEventListener('click', () => {
+    oButton.classList.remove('green-highlight');
+    xButton.classList.remove('red-highlight');
+    moveIndicator = '';
+    
+    
+  })
+}
+
+fullReset();
 
 
 toggledOButton();
