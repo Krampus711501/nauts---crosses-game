@@ -14,8 +14,10 @@ document.querySelectorAll('.game-button').forEach((button) => {
   button.addEventListener('click', () => {
     if(moveIndicator === false){
       button.innerHTML = 'O'
+      //changes button but also changes array
     } else if (moveIndicator === true){
       button.innerHTML= 'X'
+
     }
    
   });
@@ -57,6 +59,10 @@ function toggleOffX (){
   if (xButton.classList.contains('red-highlight')){
     xButton.classList.remove('red-highlight')
   }
+}
+
+function fillGameBoard (){
+
 }
 
 
