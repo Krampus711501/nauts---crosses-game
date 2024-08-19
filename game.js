@@ -116,6 +116,17 @@ function fullReset(){
     oButton.classList.remove('green-highlight');
     xButton.classList.remove('red-highlight');
     moveIndicator = '';
+    document.querySelectorAll('.game-button').forEach((button) => {
+      button.innerHTML = ''
+    })
+    
+    for(let i = 0; i < gameBoard.length; i++){
+    for(let j = 0; j < gameBoard[i].length; j++){
+      gameBoard[i][j] = 'null'
+    }
+    }
+    console.log(gameBoard)
+    
     
     
   })
